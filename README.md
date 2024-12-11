@@ -1,11 +1,16 @@
-# Homebrew Tap for Dockershrink CLI
-This is the official Homebrew Tap for [Dockershrink](https://dockershrink.com)'s [Commandline Application](https://github.com/duaraghav8/dockershrink-cli).
+# Homebrew Tap for Dockershrink
+This is the official Homebrew Tap for [Dockershrink](https://github.com/duaraghav8/dockershrink) - an Open-source, AI-powered commandline tool to reduce the size of your Docker images.
 
 ## Installation instructions
 In your terminal, run the following to install the dockershrink CLI:
 
-```sh
+```bash
 brew install duaraghav8/tap/dockershrink
+```
+
+Then check that everything is working:
+```bash
+dockershrink --version
 ```
 
 ## What is Homebrew?
