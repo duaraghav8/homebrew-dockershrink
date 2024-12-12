@@ -7,8 +7,6 @@ class Dockershrink < Formula
   sha256 "dbbfb17fc5edc7f0f078177bd63631617ecb282c5ab015673346fd8d987312e2"
   license "MPLv2"
 
-  depends_on "go" => :build
-  depends_on "rust" => :build
   depends_on "python3"
 
   resource "annotated-types" do
@@ -102,8 +100,20 @@ class Dockershrink < Formula
   end
 
   def install
-    virtualenv_create(libexec, "python3")
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3")
+
+    # Make sure to upgrade to the latest version of pip
+    venv.pip_install "pip"
+
+    # replace `virtualenv_install_with_resources` with custom installation instructions
+    # virtualenv_install_with_resources
+
+    # Install each resource with the --prefer-binary option
+    resources.each do |r|
+      venv.pip_install r, :args => ["--prefer-binary"]
+    end
+
+    venv.pip_install_and_link buildpath, :args => ["--prefer-binary"]
   end
 
   test do
