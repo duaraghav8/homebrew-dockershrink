@@ -7,6 +7,7 @@ class Dockershrink < Formula
   sha256 "dbbfb17fc5edc7f0f078177bd63631617ecb282c5ab015673346fd8d987312e2"
   license "MPLv2"
 
+  depends_on "go" => :build
   depends_on "python3"
 
   resource "annotated-types" do
