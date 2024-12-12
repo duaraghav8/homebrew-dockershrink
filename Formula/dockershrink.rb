@@ -108,12 +108,12 @@ class Dockershrink < Formula
     # replace `virtualenv_install_with_resources` with custom installation instructions
     # virtualenv_install_with_resources
 
-    # Install each resource with the --prefer-binary option
-    resources.each do |r|
-      venv.pip_install r, :args => ["--prefer-binary"]
-    end
+    # Prefer installing wheel when available instead of building from source
+    ENV["PIP_PREFER_BINARY"] = "1"
 
-    venv.pip_install_and_link buildpath, :args => ["--prefer-binary"]
+    venv.pip_install resources
+
+    venv.pip_install_and_link buildpath
   end
 
   test do
