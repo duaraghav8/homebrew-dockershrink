@@ -8,6 +8,7 @@ class Dockershrink < Formula
   license "MPLv2"
 
   depends_on "go" => :build
+  depends_on "rust" => :build
   depends_on "python3"
 
   resource "annotated-types" do
