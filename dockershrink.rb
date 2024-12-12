@@ -3,20 +3,11 @@ class Dockershrink < Formula
 
   desc "AI-powered commandline tool to reduce the size of your Docker Images"
   homepage "https://github.com/duaraghav8/dockershrink"
-  url "https://files.pythonhosted.org/packages/source/d/dockershrink/dockershrink-0.1.4.tar.gz"
+  url "https://files.pythonhosted.org/packages/a6/44/3fe51d9d5a82c91ece69305f781399f15adf1607f4cc14dbdba81d50540e/dockershrink-0.1.4.tar.gz"
   sha256 "dbbfb17fc5edc7f0f078177bd63631617ecb282c5ab015673346fd8d987312e2"
   license "MPLv2"
 
-  depends_on "python@3.y"
-
-  def install
-    virtualenv_install_with_resources
-  end
-
-  resource "colorama" do
-    url "https://files.pythonhosted.org/packages/1f/bb/5d3246097ab77fa083a61bd8d3d527b7ae063c7d8e8671b1cf8c4ec10cbe/colorama-0.4.4.tar.gz"
-    sha256 "5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"
-  end
+  depends_on "python3"
 
   resource "annotated-types" do
     url "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz"
@@ -28,14 +19,29 @@ class Dockershrink < Formula
     sha256 "2f834749c602966b7d456a7567cafcb309f96482b5081d14ac93ccd457f9dd48"
   end
 
+  resource "bashlex" do
+    url "https://files.pythonhosted.org/packages/76/60/aae0bb54f9af5e0128ba90eb83d8d0d506ee8f0475c4fdda3deeda20b1d2/bashlex-0.18.tar.gz"
+    sha256 "5bb03a01c6d5676338c36fd1028009c8ad07e7d61d8a1ce3f513b7fff52796ee"
+  end
+
   resource "certifi" do
     url "https://files.pythonhosted.org/packages/b0/ee/9b19140fe824b367c04c5e1b369942dd754c4c5462d5674002f75c4dedc1/certifi-2024.8.30.tar.gz"
     sha256 "bec941d2aa8195e248a60b31ff9f0558284cf01a52591ceda73ea9afffd69fd9"
   end
 
+  resource "colorama" do
+    url "https://files.pythonhosted.org/packages/1f/bb/5d3246097ab77fa083a61bd8d3d527b7ae063c7d8e8671b1cf8c4ec10cbe/colorama-0.4.4.tar.gz"
+    sha256 "5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"
+  end
+
   resource "distro" do
     url "https://files.pythonhosted.org/packages/fc/f8/98eea607f65de6527f8a2e8885fc8015d3e6f5775df186e443e0964a11c3/distro-1.9.0.tar.gz"
     sha256 "2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed"
+  end
+
+  resource "dockerfile" do
+    url "https://files.pythonhosted.org/packages/54/94/754d7d016f4fbbadcd280b2f99fb9b86567ef9094b241affa40c75083fe4/dockerfile-3.3.1.tar.gz"
+    sha256 "4790b3d96d1018302b27661f9624d851a4b7113bce1dbb2d7509991e81a387a9"
   end
 
   resource "h11" do
@@ -92,17 +98,13 @@ class Dockershrink < Formula
     url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
     sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
-  resource "dockerfile" do
-    url "https://files.pythonhosted.org/packages/54/94/754d7d016f4fbbadcd280b2f99fb9b86567ef9094b241affa40c75083fe4/dockerfile-3.3.1.tar.gz"
-    sha256 "4790b3d96d1018302b27661f9624d851a4b7113bce1dbb2d7509991e81a387a9"
-  end
 
-  resource "bashlex" do
-    url "https://files.pythonhosted.org/packages/76/60/aae0bb54f9af5e0128ba90eb83d8d0d506ee8f0475c4fdda3deeda20b1d2/bashlex-0.18.tar.gz"
-    sha256 "5bb03a01c6d5676338c36fd1028009c8ad07e7d61d8a1ce3f513b7fff52796ee"
+  def install
+    virtualenv_create(libexec, "python3")
+    virtualenv_install_with_resources
   end
 
   test do
-    system "#{bin}/dockershrink", "--version"
+    system "#{bin}/dockershrink", "version"
   end
 end
