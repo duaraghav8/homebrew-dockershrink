@@ -7,7 +7,7 @@ class Dockershrink < Formula
   sha256 "dbbfb17fc5edc7f0f078177bd63631617ecb282c5ab015673346fd8d987312e2"
   license "MPLv2"
 
-  depends_on "python@3.12"
+  depends_on "python@3.y"
 
   def install
     virtualenv_install_with_resources
