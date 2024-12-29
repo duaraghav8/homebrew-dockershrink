@@ -3,8 +3,8 @@ class Dockershrink < Formula
 
   desc "AI-powered commandline tool to reduce the size of your Docker Images"
   homepage "https://github.com/duaraghav8/dockershrink"
-  url "https://files.pythonhosted.org/packages/a6/44/3fe51d9d5a82c91ece69305f781399f15adf1607f4cc14dbdba81d50540e/dockershrink-0.1.4.tar.gz"
-  sha256 "dbbfb17fc5edc7f0f078177bd63631617ecb282c5ab015673346fd8d987312e2"
+  url "https://files.pythonhosted.org/packages/b9/c6/8d41f0411fac3971d4783fb88202de2ea606090660da1bb2ecb3f34889cb/dockershrink-0.1.5.tar.gz"
+  sha256 "d8aba9069eaa1eaf2bf045f12975b469caa4d29e78ceed48bb8d70199b2ba1c4"
   license "MPLv2"
 
   depends_on "go" => :build
